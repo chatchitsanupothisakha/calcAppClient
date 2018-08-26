@@ -24,14 +24,12 @@ app.controller('mainCtrl', function($scope, $serv) {
     $scope.save = function() {
         if (!$scope.isCloud) {
             fs.writeFile('assets/save.json', angular.toJson($scope.calcObj), function(err) {
-                alert("Saved!");
+                alert("Local Saved!");
             });
         } else {
             $scope.calcObj.id = UID;
             $serv.saveCloud($scope.calcObj).then(function(res) {
                 alert("Cloud Drive Saved! UID: " + $scope.calcObj.id);
-            }, function(err) {
-
             })
         }
     }
@@ -43,17 +41,13 @@ app.controller('mainCtrl', function($scope, $serv) {
                 alert("Load Local File!");
             });
         } else {
-            $scope.calcObj.id = UID;
-            $serv.loadCloud($scope.calcObj.id).then(function(res) {
-                var result = res.data.Item;
-                if (result === undefined) {
+            $serv.loadCloud(UID).then(function(res) {
+                if (res.data.err) {
                     alert("No Save File!");
                 } else {
-                    $scope.calcObj = res.data.Item;
-                    alert("Load Cloud Drive File! UID: " + UID);
+                    $scope.calcObj = res.data;
+                    alert("Load Cloud Drive File! UID: " + $scope.calcObj.id);
                 }
-            }, function(err) {
-
             })
         }
     }
