@@ -1,6 +1,6 @@
 app.factory('$serv', function($http, $q) {
     // var url = 'http://calcapp-env.k9wwxmfb9q.ap-southeast-1.elasticbeanstalk.com/api/user';
-    // var url = 'http://localhost:8081/api/user'
+    // var url = 'http://localhost:8081/api/user';
     var url = 'https://thomson-reuters-calcapp.herokuapp.com/api/user';
     var srvObj = {
         saveCloud: function(data) {
@@ -21,7 +21,7 @@ app.factory('$serv', function($http, $q) {
             $http({
                 method: 'get',
                 url: url,
-                params: { id: id }
+                params: { _id: id }
             }).then(function(res) {
                 deferred.resolve(res);
             }, function(err) {
