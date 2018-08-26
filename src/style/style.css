@@ -1,0 +1,20 @@
+body {
+    font-size: 19px;
+}
+
+.bg-btn {
+    background-color: yellow;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.pd25 {
+    padding: 25px;
+}
+
+.mt-mb15 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

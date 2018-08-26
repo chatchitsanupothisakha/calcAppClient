@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="calcApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CalcApp</title>
+    <link rel="stylesheet" href="src/style/style.css">
+</head>
+
+<body>
+    <div ng-controller="mainCtrl">
+        <div class="pd25">
+            <table>
+                <tr>
+                    <td>A</td>
+                    <td>
+                        <input type="number" ng-model="calcObj.A">
+                    </td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>
+                        <input type="number" ng-model="calcObj.B">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button ng-click="calc(1)" ng-class="{'bg-btn': calcObj.operator === 1}">+</button>
+                        <button ng-click="calc(2)" ng-class="{'bg-btn': calcObj.operator === 2}">-</button>
+                        <button ng-click="calc(3)" ng-class="{'bg-btn': calcObj.operator === 3}">x</button>
+                        <button ng-click="calc(4)" ng-class="{'bg-btn': calcObj.operator === 4}">/</button>
+                        <button ng-click="calc(5)" ng-class="{'bg-btn': calcObj.operator === 5}">Pow</button>
+                    </td>
+                </tr>
+            </table>
+            <div class="mt-mb15">
+                Result <input type="number" ng-model="calcObj.result">
+            </div>
+            <div class="text-right mt-mb15">
+                <input type="checkbox" ng-model="isCloud"> Cloud Drive
+            </div>
+            <div class="text-right">
+                <button ng-click="load()">Load</button>
+                <button ng-click="save()">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.js"></script>
+    <script src="src/js/app.js"></script>
+    <script src="src/js/ctrl.js"></script>
+    <script src="src/js/serv.js"></script>
+</body>
+
+</html>
